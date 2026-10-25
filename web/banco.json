@@ -1,0 +1,183 @@
+[
+  {
+    "id": "C12",
+    "tipo": "verdadero",
+    "lado": "izq",
+    "fecha": "15 oct",
+    "cuenta": "Cargo público",
+    "texto": "Abre su temporada la piscina privada de la Puerta del Sol 🥸",
+    "img": "img/C12.jpg",
+    "alt": "Fotograma: gente en el agua de la fuente de Sol, con una colchoneta y sillas, junto a las tiendas de campaña",
+    "verif": "https://maldita.es/desinfo/20261016/los-manifestantes-de-la-acampada-de-la-puerta-del-sol-convierten-la-fuente-de-la-estatua-de-carlos-iii-en-un-parque-acuatico-con-colchonetas-hinchables/"
+  },
+  {
+    "id": "C34",
+    "tipo": "verdadero",
+    "lado": "izq",
+    "fecha": "14 oct",
+    "cuenta": "@usuario_7719",
+    "texto": "Brutal carga de la Policía Nacional de Marlaska contra estudiantes por la Complutense en este día de huelga educativa.",
+    "img": "img/C34.jpg",
+    "alt": "Fotograma: policías antidisturbios cargan contra estudiantes frente a la Facultad de Ciencias Físicas",
+    "verif": "https://maldita.es/desinfo/20261015/un-video-muestra-agentes-de-la-policia-nacional-cargando-contra-manifestantes-delante-de-la-facultad-de-ciencias-quimicas-de-la-complutense/"
+  },
+  {
+    "id": "C42",
+    "tipo": "verdadero",
+    "lado": "izq",
+    "fecha": "12 oct",
+    "cuenta": "@usuario_8841",
+    "texto": "🇪🇦‼️Qué Grande Barcelona! El Paseo de Gracia INUNDADO de banderas de Ceuta ❤️ #12deOctubre",
+    "img": "img/C42.jpg",
+    "alt": "Fotograma: banderas de Ceuta y de España en el paseo de Gràcia",
+    "verif": "https://www.diaridetarragona.com/catalunya/272938/1-700-personas-manifiestan-barcelona-banderas-espanolas-ceuta-12.html"
+  },
+  {
+    "id": "C43",
+    "tipo": "verdadero",
+    "lado": "izq",
+    "fecha": "17 oct",
+    "cuenta": "Medio de comunicación",
+    "texto": "Pedro Sánchez aparece con Begoña Gómez en el mitin de Fuenlabrada",
+    "img": "img/C43.jpg",
+    "alt": "Foto: Sánchez y Begoña Gómez se besan en un mitin",
+    "verif": "https://www.infobae.com/america/agencias/2026/10/17/sanchez-llega-al-mitin-de-fuenlabrada-madrid-junto-a-begona-gomez-a-la-espera-de-juicio-por-varios-delitos/"
+  },
+  {
+    "id": "C49",
+    "tipo": "verdadero",
+    "lado": "der",
+    "fecha": "21 oct",
+    "cuenta": "@usuario_5126",
+    "texto": "Gigantesca manifestación antifascista hoy contra el ultraderechista Santiago Abascal de VOX en A Coruña. El pueblo gallego nunca falla.",
+    "img": "img/C49.jpg",
+    "alt": "Fotograma desde un balcón: una plaza llena de manifestantes con banderas rojas",
+    "verif": "https://www.galiciapress.es/articulo/politica/2026-10-21/6060275-disturbios-cargas-policiales-coruna-contra-manifestantes-protestaban-ante-acto-abascal"
+  },
+  {
+    "id": "C36",
+    "tipo": "verdadero",
+    "lado": "der",
+    "fecha": "14 oct",
+    "cuenta": "@usuario_1958",
+    "texto": "📊CIS - 🗳️Elecciones Generales: ‼️El 🌹PSOE se 📈dispara y la 🔵derecha se 📉hunde. 🌹PSOE: 34,0% (+3,0)",
+    "img": "img/C36.jpg",
+    "alt": "Gráfico en semicírculo con los porcentajes de voto del CIS por partido",
+    "verif": "https://www.cmmedia.es/noticias/espana/barometro-cis-octubre-2026-psoe-pp-vox.html",
+    "pareja": "C04"
+  },
+  {
+    "id": "C38",
+    "tipo": "verdadero",
+    "lado": "der",
+    "fecha": "13 oct",
+    "cuenta": "@usuario_4410",
+    "texto": "🇸🤝🇷 ¡EL EJE NACIONALISTA SE FORTALECE EN CEUTA! Santiago Abascal y Jordan Bardella, codo con codo.",
+    "img": "img/C38.jpg",
+    "alt": "Fotograma: Abascal y Bardella caminando juntos",
+    "verif": "https://theobjective.com/espana/politica/2026-10-12/abascal-12-octubre-ceuta/"
+  },
+  {
+    "id": "C51",
+    "tipo": "verdadero",
+    "lado": "der",
+    "fecha": "21 oct",
+    "cuenta": "Medio de comunicación",
+    "texto": "Efusivo abrazo de Ayuso con Milei durante su reunión en el Canal de Isabel II en Madrid",
+    "img": "img/C51.jpg",
+    "alt": "Fotograma: Isabel Díaz Ayuso y Javier Milei se saludan sonrientes, cogidos de las manos, en unas escaleras",
+    "verif": "https://www.democrata.es/politica/ayuso-recibe-milei-en-canal-isabel-ii-sus-ataques-sanchez-lejos-acampada-sol/"
+  },
+  {
+    "id": "C45",
+    "tipo": "tradicional",
+    "lado": "izq",
+    "fecha": "12 oct",
+    "cuenta": "@usuario_7034",
+    "texto": "🚨 ACTUALIZACIÓN URGENTE: la frontera ha «COLAPSADO TOTALMENTE». MILES de hombres han cruzado la frontera en las últimas horas",
+    "img": "img/C45.jpg",
+    "alt": "Fotograma de Fox News: multitud corriendo en Ceuta",
+    "verif": "https://www.newtral.es/colapso-frontera-ceuta/20261015/"
+  },
+  {
+    "id": "C07",
+    "tipo": "tradicional",
+    "lado": "izq",
+    "fecha": "10 oct",
+    "cuenta": "@usuario_4521",
+    "texto": "ABUCHEO HISTÓRICO contra Pedro Sánchez en Bilbao",
+    "img": "img/C07.jpg",
+    "alt": "Fotograma: calle llena de gente con banderas de España",
+    "verif": "https://maldita.es/desinfo/20261013/miles-de-personas-salen-a-las-calles-de-bilbao-con-banderas-de-espana-para-exigir-responsabilidades-al-gobierno-de-sanchez-por-la-crisis-de-la-vivienda/"
+  },
+  {
+    "id": "C01",
+    "tipo": "tradicional",
+    "lado": "der",
+    "fecha": "11 oct",
+    "cuenta": "@usuario_9902",
+    "texto": "INCROYABLE 😱",
+    "img": "img/C01.jpg",
+    "alt": "Fotograma: multitud ante un escenario con el rótulo «todo con pedro Sánchez»",
+    "verif": "https://maldita.es/desinfo/20261014/svideos-muestran-manifestaciones-en-toda-espana-en-apoyo-a-pedro-sanchez/",
+    "pareja": "C21"
+  },
+  {
+    "id": "C04",
+    "tipo": "tradicional",
+    "lado": "der",
+    "fecha": "16 oct",
+    "cuenta": "@usuario_3315",
+    "texto": "Última hora | El CIS mantiene al PSOE como primera fuerza con el 31% y Vox sube al 16,6%",
+    "img": "img/C04.jpg",
+    "alt": "Gráfica: PSOE 31 %, PP 25,5 %, Vox 16,6 %, con fotos de Sánchez, Feijóo y Abascal",
+    "verif": "https://maldita.es/desinfo/20261016/encuestas-en-tiktok-le-dan-la-victoria-al-psoe-en-las-elecciones-del-29n/",
+    "pareja": "C36"
+  },
+  {
+    "id": "C47",
+    "tipo": "ia",
+    "lado": "izq",
+    "fecha": "18 oct",
+    "cuenta": "Cargo público",
+    "texto": "Así va a dejar Sánchez a nuestros mayores.\n\n«Una pareja de 80 años fue robada por los alborotadores en París anoche.»",
+    "img": "img/C47.jpg",
+    "alt": "Imagen: una pareja de ancianos en ropa interior en una calle de noche, rodeados de personas vestidas de negro",
+    "verif": "https://maldita.es/desinfo/20261019/una-pareja-de-ancianos-fue-asaltada-y-dejada-casi-desnuda-durante-las-protestas-en-paris-contra-el-alto-costo-de-la-vida/"
+  },
+  {
+    "id": "C25",
+    "tipo": "ia",
+    "lado": "izq",
+    "fecha": "6 oct",
+    "cuenta": "@usuario_6058",
+    "texto": "TÚ VOTO LLEGA SEGURO 👇",
+    "img": "img/C25.jpg",
+    "alt": "Imagen hecha con IA: en una oficina de Correos, un empleado tritura sobres del PSOE mientras una anciana le entrega su voto; al lado, una saca llena de votos del PSOE y un cartel de «Elecciones 29N»",
+    "verif": "https://maldita.es/investigaciones/20261007/campana-desinformacion-ia-narrativa-pucherazo-29n/"
+  },
+  {
+    "id": "C09",
+    "tipo": "ia",
+    "lado": "der",
+    "fecha": "15 oct",
+    "cuenta": "@usuario_2741",
+    "texto": "En fotos filtradas de Netanyahu, hay una pizarra donde se prepara un ataque mediático a España.",
+    "img": "img/C09.jpg",
+    "alt": "Dos fotos: Netanyahu señala una pizarra; ampliación con la palabra SPAIN",
+    "verif": "https://maldita.es/desinfo/20261015/foto-netanyahu-pizarra-espana-spain/",
+    "piloto_extra": true
+  },
+  {
+    "id": "C21",
+    "tipo": "ia",
+    "lado": "der",
+    "fecha": "10 sep",
+    "cuenta": "@usuario_5587",
+    "texto": "SANCHEZ VOLVERIA GANAR LA ELECCIONES DEL 2027",
+    "img": "img/C21.jpg",
+    "alt": "Imagen: multitud en Cibeles con el rótulo «Sánchez volvería ganar las elecciones del 2027» y una pancarta «Pedro Sánchez, no estás solo»",
+    "verif": "https://maldita.es/desinfo/20261014/svideos-muestran-manifestaciones-en-toda-espana-en-apoyo-a-pedro-sanchez/",
+    "pareja": "C01"
+  }
+]
