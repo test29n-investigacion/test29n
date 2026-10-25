@@ -15,7 +15,8 @@ export const TEXTOS = {
   menor: "Esta encuesta es para personas de 14 años o más. Gracias por tu interés; no se ha guardado nada.",
   instruccionTitulo: "Ahora, 8 publicaciones",
   instruccion: [
-    "Vas a ver 8 publicaciones que han circulado en redes durante esta campaña electoral. Algunas son reales y otras falsas.",
+    "Imagina que estás mirando tus redes sociales y te van saliendo estas publicaciones.",
+    "Son 8 publicaciones que han circulado en redes durante esta campaña electoral. Algunas son reales y otras falsas.",
     "No hay nota: nos interesa tu primera impresión, así que responde sin buscar en internet.",
     "Responde pensando en la publicación entera: lo que dice el texto y lo que muestra la imagen.",
   ],

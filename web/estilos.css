@@ -2,7 +2,7 @@
    Fuentes del sistema: la web no pide nada a otros servidores. */
 :root {
   --bg: #EEF0EA; --surface: #FFFFFF; --ink: #15202B; --muted: #5A6570; --line: #D5DAD0;
-  --accent: #2944B8; --accent-ink: #FFFFFF; --soft: #E2E7F7; --aviso: #9A3B00;
+  --accent: #2944B8; --accent-ink: #FFFFFF; --soft: #E2E7F7; --aviso: #9A3B00; --bien: #1E7A3C; --mal: #B42318;
   --display: "Avenir Next", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -11,7 +11,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0F141A; --surface: #18202A; --ink: #E6EBEF; --muted: #9AA6B1; --line: #2A3440;
-    --accent: #8EA4FF; --accent-ink: #0F141A; --soft: #1F2A44; --aviso: #F0A35E;
+    --accent: #8EA4FF; --accent-ink: #0F141A; --soft: #1F2A44; --aviso: #F0A35E; --bien: #5FD08A; --mal: #FF8A80;
     color-scheme: dark;
   }
 }
@@ -84,6 +84,9 @@ select.opt { width: 100%; appearance: auto; }
 .sello.real { background: var(--soft); color: var(--accent); }
 .sello.falso { background: var(--ink); color: var(--bg); }
 .tu-respuesta { font-size: .85rem; color: var(--muted); }
+.acierto { font-weight: 600; white-space: nowrap; }
+.acierto.bien { color: var(--bien); }
+.acierto.mal { color: var(--mal); }
 .consejos { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
 
 @media (prefers-reduced-motion: reduce) { .barra i { transition: none; } }

@@ -244,8 +244,10 @@ function pintarResultado() {
   const items = S.orden.map(id => {
     const b = S.porId[id];
     const real = b.tipo === "verdadero";
+    const v = S.r[`${id}_resp`];
+    const bien = v && (v === "Real") === real;
     return `<li class="resultado-item"><span class="sello ${real ? "real" : "falso"}">${real ? "Real" : "Falsa"}</span>
-      <div><p>${esc(b.texto)}</p><p class="tu-respuesta">Tu respuesta: ${esc(S.r[`${id}_resp`] || "—")}${tecnica[b.tipo]}</p>
+      <div><p>${esc(b.texto)}</p><p class="tu-respuesta"><span class="acierto ${bien ? "bien" : "mal"}">${bien ? "✓ Acertaste" : "✗ Fallaste"}</span> · Tu respuesta: ${esc(v || "—")}${tecnica[b.tipo]}</p>
       <a href="${esc(b.verif)}" target="_blank" rel="noopener noreferrer">Ver la verificación</a></div></li>`;
   }).join("");
   $("pantalla").innerHTML = `<div id="resultado" class="pila">
