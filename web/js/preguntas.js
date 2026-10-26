@@ -1,5 +1,6 @@
 // Textos de la encuesta. Las preguntas son literales del «Cuestionario 29N — borrador v1», salvo con1
-// (25 oct: «¿Cuántos diputados tiene el Congreso?» era demasiado difícil y se cambió por una sobre los candidatos).
+// (25 oct: «¿Cuántos diputados tiene el Congreso?» era demasiado difícil y se cambió por una sobre los candidatos)
+// y las fuentes de información (26 oct: matriz de frecuencia en lugar de «elige hasta dos»).
 
 export const TEXTOS = {
   titulo: "¿Sabrías detectar los bulos de esta campaña?",
@@ -13,6 +14,10 @@ export const TEXTOS = {
     "Son unos 5 minutos y es anónimo. Si no llegas al final, no se guarda nada.",
   ],
   menor: "Esta encuesta es para personas de 14 años o más. Gracias por tu interés; no se ha guardado nada.",
+  correo: "test29n.investigacion@gmail.com",
+  contacto: "Si tienes dudas sobre el estudio o sobre el uso de los datos, escribe a",
+  noAcepto: "De acuerdo. No se ha guardado nada. Gracias por tu tiempo.",
+  faltaRespuesta: "Te has dejado alguna pregunta sin responder. Puedes contestarla o seguir sin responder.",
   instruccionTitulo: "Ahora, 8 publicaciones",
   instruccion: [
     "Imagina que estás mirando tus redes sociales y te van saliendo estas publicaciones.",
@@ -46,7 +51,21 @@ export const CONSEJOS = [
   { texto: "Fíjate en los detalles de la publicación: quién la publica, la fecha y el estilo de redacción." },
 ];
 
-export const EDAD = { k: "edad", t: "¿Cuántos años tienes?", o: ["Menos de 14", "14–15", "16–17", "18–19", "20 o más"] };
+// La edad es la única pregunta obligatoria: hace falta para comprobar que se puede participar (14 años o más).
+export const EDAD = { k: "edad", t: "¿Cuántos años tienes?", sub: "Es la única pregunta obligatoria: la necesitamos para comprobar que puedes participar.",
+  o: ["Menos de 14", "14–15", "16–17", "18–19", "20 o más"] };
+
+// Matriz de frecuencia (sugerencia de A. Ardèvol-Abreu, 26 oct): una fila por medio, de 1 (nunca) a 5 (todo el tiempo).
+// Cada fila se guarda en su propia columna (info_*); fila.js tiene la misma lista de claves (lo comprueba una prueba).
+export const FUENTES = {
+  k: "fuentes", t: "¿Con qué frecuencia te informas sobre política en cada uno de estos sitios?", sub: "De 1 (nunca) a 5 (todo el tiempo).",
+  matriz: [
+    { k: "info_tiktok", t: "TikTok" }, { k: "info_instagram", t: "Instagram" }, { k: "info_youtube", t: "YouTube" },
+    { k: "info_x", t: "X (Twitter)" }, { k: "info_mensajeria", t: "WhatsApp o Telegram" }, { k: "info_tv", t: "Televisión" },
+    { k: "info_prensa", t: "Prensa digital o en papel" }, { k: "info_radio", t: "Radio o pódcast" }, { k: "info_familia", t: "Familia y amigos" },
+  ],
+  o: ["1", "2", "3", "4", "5"], fila: 5, escala: ["Nunca", "Todo el tiempo"],
+};
 
 export const BLOQUE1 = [
   { k: "estudios", t: "¿Qué estás estudiando ahora?", o: ["ESO", "Bachillerato", "FP", "Universidad", "No estudio", "Otro"] },
@@ -54,8 +73,7 @@ export const BLOQUE1 = [
     o: ["Andalucía", "Aragón", "Asturias", "Baleares", "Canarias", "Cantabria", "Castilla-La Mancha", "Castilla y León", "Cataluña",
       "Comunidad Valenciana", "Extremadura", "Galicia", "La Rioja", "Madrid", "Murcia", "Navarra", "País Vasco", "Ceuta", "Melilla"] },
   { k: "voto", t: "¿Podrás votar en las elecciones del 29 de noviembre?", o: ["Sí, por primera vez", "Sí, y ya he votado antes", "No, aún no tengo edad", "No lo sé"] },
-  { k: "fuentes_info", t: "¿Dónde te informas sobre política?", sub: "Elige hasta dos.", max: 2,
-    o: ["TikTok", "Instagram", "YouTube", "X", "WhatsApp o Telegram", "Televisión", "Prensa digital o en papel", "Radio o pódcast", "Familia y amigos", "Casi no me informo"] },
+  FUENTES,
   { k: "horas_redes", t: "¿Cuánto tiempo pasas al día en redes sociales?", o: ["Menos de 1 h", "1–2 h", "2–4 h", "Más de 4 h"] },
   { k: "comprueba", t: "Antes de creerte o compartir una noticia, ¿compruebas si es verdad?", o: ["Nunca", "A veces", "A menudo", "Siempre"] },
   { k: "conoce_verificadores", t: "¿Conoces Maldita, Newtral o EFE Verifica?", o: ["Sí, y los uso", "Sí, pero no los uso", "No"] },

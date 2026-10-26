@@ -59,6 +59,18 @@ function htmlPregunta(clave, q) {
     ${cuerpo}${q.escala ? `<div class="escala"><span>${esc(q.escala[0])}</span><span>${esc(q.escala[1])}</span></div>` : ""}</div>`;
 }
 
+/** Matriz: una fila por elemento, cada una con la misma escala; cada fila se guarda en su propia clave. */
+function htmlMatriz(q) {
+  const filas = q.matriz.map(it => {
+    const v = S.r[it.k];
+    return `<div class="matriz-fila" data-pregunta="${esc(it.k)}"><p class="matriz-item">${esc(it.t)}</p>
+      <div class="opts fila" style="--n:${q.o.length}" role="group" aria-label="${esc(it.t)}">${q.o.map(o =>
+        `<button type="button" class="opt" data-k="${esc(it.k)}" data-v="${esc(o)}" aria-pressed="${v === o}">${esc(o)}</button>`).join("")}</div></div>`;
+  }).join("");
+  return `<div class="pregunta matriz"><p class="enunciado">${esc(q.t)}</p>${q.sub ? `<p class="atenuado">${esc(q.sub)}</p>` : ""}
+    <div class="escala"><span>${esc(q.escala[0])}</span><span>${esc(q.escala[1])}</span></div>${filas}</div>`;
+}
+
 function htmlPublicacion(b) {
   const autor = S.grupo === "A" || MODO === "preensayo"
     ? `<span class="cuenta">${esc(b.cuenta)}</span>`
@@ -92,8 +104,12 @@ function pintar() {
     const parrafos = MODO === "preensayo" ? TEXTOS.bienvenidaPreensayo : TEXTOS.bienvenida;
     html = `<p class="etiqueta">Test · Elecciones 29N</p><h1>${esc(TEXTOS.titulo)}</h1>
       <div class="consentimiento">${parrafos.map(t => `<p>${esc(t)}</p>`).join("")}
-      <p><a href="info.html" target="_blank" rel="noopener">Más información sobre el estudio</a></p></div>`;
+      <p><a href="info.html" target="_blank" rel="noopener">Más información sobre el estudio</a></p>
+      <p>${esc(TEXTOS.contacto)} <a href="mailto:${esc(TEXTOS.correo)}">${esc(TEXTOS.correo)}</a>.</p></div>`;
     boton = "Acepto y empiezo";
+  } else if (p.tipo === "pregunta" && p.q.matriz) {
+    html = htmlMatriz(p.q);
+    claves = p.q.matriz.map(x => x.k);
   } else if (p.tipo === "pregunta") {
     html = htmlPregunta(p.q.k, p.q);
     claves = [p.q.k];
@@ -116,9 +132,25 @@ function pintar() {
 
   m.innerHTML = html;
   if (boton) {
-    m.insertAdjacentHTML("beforeend", `<button type="button" class="boton" id="siguiente">${esc(boton)}</button>`);
+    m.insertAdjacentHTML("beforeend", `<p class="aviso" id="aviso-falta" role="status" hidden>${esc(TEXTOS.faltaRespuesta)}</p>
+      <button type="button" class="boton" id="siguiente">${esc(boton)}</button>`);
+    if (p.tipo === "bienvenida") {
+      m.insertAdjacentHTML("beforeend", `<button type="button" class="boton secundario" id="no-acepto">No acepto</button>`);
+      $("no-acepto").onclick = () => {
+        $("progreso").hidden = true;
+        $("pantalla").innerHTML = `<h2>Gracias</h2><p>${esc(TEXTOS.noAcepto)}</p>`;
+      };
+    }
     const sig = $("siguiente");
-    const actualizar = () => { sig.disabled = !claves.every(respondida); };
+    const aviso = $("aviso-falta");
+    // Ninguna respuesta es obligatoria salvo la edad (filtro de 14 años): si falta alguna, se avisa una vez
+    // y el segundo clic deja seguir sin responder.
+    const obligatoria = Boolean(p.filtroEdad);
+    const actualizar = () => {
+      const todas = claves.every(respondida);
+      if (obligatoria) { sig.disabled = !todas; return; }
+      if (todas) { aviso.hidden = true; sig.textContent = boton; }
+    };
     actualizar();
     m.onclick = e => {
       const o = e.target.closest("button.opt[data-k]");
@@ -131,7 +163,15 @@ function pintar() {
     m.onchange = e => {
       if (e.target.matches("select[data-k]")) { S.r[e.target.dataset.k] = e.target.value || undefined; actualizar(); }
     };
-    sig.onclick = () => avanzar(p);
+    sig.onclick = () => {
+      if (!obligatoria && !claves.every(respondida) && S.avisado !== S.i) {
+        S.avisado = S.i;
+        aviso.hidden = false;
+        sig.textContent = "Seguir sin responder";
+        return;
+      }
+      avanzar(p);
+    };
   } else {
     m.onclick = null;
     m.onchange = null;
@@ -246,8 +286,10 @@ function pintarResultado() {
     const real = b.tipo === "verdadero";
     const v = S.r[`${id}_resp`];
     const bien = v && (v === "Real") === real;
+    const marca = !v ? `<span class="acierto neutro">Sin responder</span>`
+      : `<span class="acierto ${bien ? "bien" : "mal"}">${bien ? "✓ Acertaste" : "✗ Fallaste"}</span>`;
     return `<li class="resultado-item"><span class="sello ${real ? "real" : "falso"}">${real ? "Real" : "Falsa"}</span>
-      <div><p>${esc(b.texto)}</p><p class="tu-respuesta"><span class="acierto ${bien ? "bien" : "mal"}">${bien ? "✓ Acertaste" : "✗ Fallaste"}</span> · Tu respuesta: ${esc(v || "—")}${tecnica[b.tipo]}</p>
+      <div><p>${esc(b.texto)}</p><p class="tu-respuesta">${marca} · Tu respuesta: ${esc(v || "—")}${tecnica[b.tipo]}</p>
       <a href="${esc(b.verif)}" target="_blank" rel="noopener noreferrer">Ver la verificación</a></div></li>`;
   }).join("");
   $("pantalla").innerHTML = `<div id="resultado" class="pila">

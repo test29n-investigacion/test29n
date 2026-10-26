@@ -1,11 +1,13 @@
 // Fila de datos que se envía al receptor (spec §8 y §9).
 
 const N = 8;
+// Una columna por medio de la matriz de fuentes (misma lista que FUENTES.matriz en preguntas.js).
+export const INFO = ["info_tiktok", "info_instagram", "info_youtube", "info_x", "info_mensajeria", "info_tv", "info_prensa", "info_radio", "info_familia"];
 const serie = (sufijo, n = N, prefijo = "t") => Array.from({ length: n }, (_, i) => `${prefijo}${i + 1}_${sufijo}`);
 
 export const CAMPOS = [
   "version_app", "oleada", "modo", "fecha", "canal", "grupo", "lista_der", "orden",
-  "edad", "estudios", "ccaa", "voto", "fuentes_info", "horas_redes", "comprueba", "conoce_verificadores",
+  "edad", "estudios", "ccaa", "voto", ...INFO, "horas_redes", "comprueba", "conoce_verificadores",
   ...serie("id"), ...serie("resp"), ...serie("seg"), ...serie("visto"), ...serie("ms"), ...serie("fuera"),
   "autoestimacion", "buscado", "interes", "con1", "con2", "con3", "ideologia", "repetido",
   ...serie("entiende"), "quien_extra",
@@ -45,7 +47,7 @@ function comunes(e) {
 /** @returns {Record<string,string>} con exactamente las claves de CAMPOS, en orden */
 export function construirFila(e) {
   const datos = { ...comunes(e), grupo: e.grupo, lista_der: e.listaDer, orden: e.orden.join("-") };
-  for (const k of ["edad", "estudios", "ccaa", "voto", "fuentes_info", "horas_redes", "comprueba", "conoce_verificadores",
+  for (const k of ["edad", "estudios", "ccaa", "voto", ...INFO, "horas_redes", "comprueba", "conoce_verificadores",
     "autoestimacion", "buscado", "interes", "con1", "con2", "con3", "ideologia", "repetido"]) datos[k] = e.r[k];
   e.orden.forEach((id, i) => {
     const n = i + 1;

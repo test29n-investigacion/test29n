@@ -61,6 +61,7 @@ select.opt { width: 100%; appearance: auto; }
 
 .boton { background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 10px; padding: 14px 18px; font-weight: 600; cursor: pointer; min-height: 52px; }
 .boton:disabled { opacity: .45; cursor: not-allowed; }
+.boton.secundario { background: transparent; color: var(--ink); border: 1px solid var(--line); }
 .aviso { color: var(--aviso); font-weight: 500; }
 
 /* Publicación */
@@ -87,6 +88,10 @@ select.opt { width: 100%; appearance: auto; }
 .acierto { font-weight: 600; white-space: nowrap; }
 .acierto.bien { color: var(--bien); }
 .acierto.mal { color: var(--mal); }
+.acierto.neutro { color: var(--muted); }
+.matriz .escala { margin: 4px 0 2px; }
+.matriz-fila { padding: 8px 0; border-top: 1px solid var(--line); }
+.matriz-item { margin: 0 0 6px; font-weight: 600; }
 .consejos { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
 
 @media (prefers-reduced-motion: reduce) { .barra i { transition: none; } }

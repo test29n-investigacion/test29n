@@ -1,11 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { CAMPOS, CAMPOS_PREENSAYO, leerCanal, construirFila, construirFilaPreensayo, fechaLocal } from "../web/js/fila.js";
+import { CAMPOS, CAMPOS_PREENSAYO, INFO, leerCanal, construirFila, construirFilaPreensayo, fechaLocal } from "../web/js/fila.js";
+import { FUENTES } from "../web/js/preguntas.js";
 
 const orden = ["C12", "C07", "C36", "C25", "C42", "C01", "C38", "C09"];
 const r = {
   edad: "16–17", estudios: "Bachillerato", ccaa: "Madrid", voto: "No, aún no tengo edad",
-  fuentes_info: ["TikTok", "Instagram"], horas_redes: "2–4 h", comprueba: "A veces", conoce_verificadores: "No",
+  info_tiktok: "5", info_instagram: "4", info_tv: "1", horas_redes: "2–4 h", comprueba: "A veces", conoce_verificadores: "No",
   autoestimacion: "6", buscado: "No", interes: "Bastante", con1: "Alberto Núñez Feijóo", con2: "El Rey", con3: "4",
   ideologia: "Prefiero no responder", repetido: "No",
 };
@@ -51,10 +52,19 @@ test("tiempos redondeados y salida de página como si/no", () => {
   assert.equal(f.t1_fuera, "no");
 });
 
-test("fuentes_info múltiple se une con '|' y lista_der es texto", () => {
+test("la matriz de fuentes va en una columna por medio (la que no se contesta queda vacía) y lista_der es texto", () => {
   const f = construirFila(ejemplo);
-  assert.equal(f.fuentes_info, "TikTok|Instagram");
+  assert.equal(f.info_tiktok, "5");
+  assert.equal(f.info_instagram, "4");
+  assert.equal(f.info_tv, "1");
+  assert.equal(f.info_radio, "");
   assert.equal(f.lista_der, "1");
+});
+
+test("las claves de la matriz de fuentes de preguntas.js son las columnas INFO de fila.js", () => {
+  assert.deepEqual(FUENTES.matriz.map(x => x.k), INFO);
+  assert.ok(INFO.every(k => CAMPOS.includes(k)));
+  assert.ok(!CAMPOS.includes("fuentes_info"));
 });
 
 test("respuesta que falta queda vacía, no undefined", () => {

@@ -160,6 +160,49 @@ async def menor_de_14(ctx, rec):
 
 
 @prueba
+async def no_acepto_sale_sin_guardar(ctx, rec):
+    page = await ctx.new_page()
+    await rec.instalar(page)
+    await page.goto(f"http://127.0.0.1:{PUERTO}/")
+    assert "test29n.investigacion@gmail.com" in await page.locator("#pantalla").inner_text()
+    await page.locator("#no-acepto").click()
+    await page.get_by_text("No se ha guardado nada").wait_for()
+    assert not await page.locator("#siguiente").count()
+    assert rec.filas == []
+
+
+@prueba
+async def se_puede_seguir_sin_responder_salvo_la_edad(ctx, rec):
+    page = await ctx.new_page()
+    await rec.instalar(page)
+    await page.goto(f"http://127.0.0.1:{PUERTO}/?c=prueba")
+    await page.locator("#siguiente").click()  # bienvenida
+    assert await page.locator("#siguiente").is_disabled(), "la edad debe ser obligatoria"
+    await page.get_by_role("button", name="16–17").click()
+    await page.locator("#siguiente").click()
+    # Primera pregunta sin contestar: el primer clic avisa y no avanza; el segundo avanza.
+    enunciado = await page.locator(".enunciado").first.inner_text()
+    await page.locator("#siguiente").click()
+    assert await page.locator("#aviso-falta").is_visible()
+    assert await page.locator(".enunciado").first.inner_text() == enunciado
+    assert await page.locator("#siguiente").inner_text() == "Seguir sin responder"
+    pasos = 0
+    while not await page.locator("#enviar").count():
+        await page.locator("#siguiente").click()
+        if await page.locator("#aviso-falta").is_visible():
+            await page.locator("#siguiente").click()
+        pasos += 1
+        assert pasos < 80
+    await page.locator("#enviar").click()
+    await page.locator("#resultado").wait_for()
+    assert await page.locator("#puntuacion").inner_text() == "0"
+    assert await page.locator(".acierto.neutro").count() == 8
+    f = rec.filas[0]
+    assert f["edad"] == "16–17" and f["estudios"] == "" and f["info_tiktok"] == "" and f["t1_resp"] == ""
+    assert f["t1_id"] and f["t1_ms"] != ""
+
+
+@prueba
 async def recarga_a_mitad(ctx, rec):
     page = await ctx.new_page()
     await rec.instalar(page)
@@ -368,7 +411,8 @@ async def dato_a_dato_lo_guardado_es_lo_pulsado(ctx, rec):
     page = await ctx.new_page()  # sin page.route: peticiones, caché y CORS como en la web publicada
     await page.goto(f"http://127.0.0.1:{PUERTO_COPIA}/?c=instituto")
     perfil = {"edad": "16–17", "estudios": "Bachillerato", "ccaa": "Castilla y León", "voto": "No, aún no tengo edad",
-              "fuentes_info": ["TikTok", "Prensa digital o en papel"], "horas_redes": "2–4 h", "comprueba": "A veces",
+              "info_tiktok": "5", "info_instagram": "4", "info_youtube": "3", "info_x": "1", "info_mensajeria": "4",
+              "info_tv": "2", "info_prensa": "3", "info_radio": "1", "info_familia": "5", "horas_redes": "2–4 h", "comprueba": "A veces",
               "conoce_verificadores": "Sí, pero no los uso", "autoestimacion": "5", "buscado": "No", "interes": "Poco",
               "con1": "Alberto Núñez Feijóo", "con2": "El Rey", "con3": "4", "ideologia": "7", "repetido": "No"}
     vistos, esperado_pub, grupo = [], {}, None
