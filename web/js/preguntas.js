@@ -18,7 +18,7 @@ export const TEXTOS = {
   contacto: "Si tienes dudas sobre el estudio o sobre el uso de los datos, escribe a",
   noAcepto: "De acuerdo. No se ha guardado nada. Gracias por tu tiempo.",
   faltaRespuesta: "Te has dejado alguna pregunta sin responder. Puedes contestarla o seguir sin responder.",
-  instruccionTitulo: "Ahora, 8 publicaciones",
+  instruccionTitulo: "Ahora te mostramos las 8 publicaciones",
   instruccion: [
     "Imagina que estás mirando tus redes sociales y te van saliendo estas publicaciones.",
     "Son 8 publicaciones que han circulado en redes durante esta campaña electoral. Algunas son reales y otras falsas.",
