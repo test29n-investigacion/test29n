@@ -113,3 +113,25 @@ test("barajar devuelve una permutación de la lista sin modificarla", async () =
   assert.deepEqual(b.slice().sort(), copia.slice().sort());
   assert.notDeepEqual(b, copia);
 });
+
+test("las publicaciones ocultas no salen nunca en el sorteo", async () => {
+  const { activas } = await import("../web/js/banco.js");
+  // Solo C45 oculta (C07 visible), para probar el mecanismo con independencia del estado real del banco.
+  const conOculta = banco.map(b => (b.id === "C45" ? { ...b, oculta: true } : b.id === "C07" ? { ...b, oculta: false } : b));
+  const rng = rngSemilla(7);
+  for (let k = 0; k < 500; k++) {
+    const { orden } = sortear(activas(conOculta), rng);
+    assert.ok(!orden.includes("C45"));
+    assert.equal(orden.length, 8);
+  }
+});
+
+test("con C07 oculta (29 oct) se siguen sorteando 8 publicaciones sin C07", async () => {
+  const { activas } = await import("../web/js/banco.js");
+  const rng = rngSemilla(11);
+  for (let k = 0; k < 500; k++) {
+    const { orden } = sortear(activas(banco), rng);
+    assert.equal(orden.length, 8);
+    if (banco.find(b => b.id === "C07")?.oculta) assert.ok(!orden.includes("C07"));
+  }
+});

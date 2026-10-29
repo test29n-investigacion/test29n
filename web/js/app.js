@@ -1,6 +1,6 @@
 // Flujo de pantallas (spec §6, §7, §9). Es el único módulo que toca la página.
 import { RECEPTOR_URL, VERSION_APP, OLEADA } from "../config.js";
-import { validarBanco } from "./banco.js";
+import { validarBanco, activas } from "./banco.js";
 import { sortear, barajar } from "./sorteo.js";
 import { leerCanal, construirFila, construirFilaPreensayo, fechaLocal } from "./fila.js";
 import { crearEnviador } from "./envio.js";
@@ -327,12 +327,14 @@ async function iniciar() {
     if (validarBanco(banco).length) throw new Error("banco no válido");
     S.banco = banco;
     S.porId = Object.fromEntries(banco.map(b => [b.id, b]));
+    // Las marcadas como «oculta» no se sortean en el test; el preensayo sigue mostrando las 16 para evaluarlas.
+    const enUso = activas(banco);
     if (MODO === "preensayo") {
       S.orden = barajar(banco.map(b => b.id));
       S.grupo = "";
       S.listaDer = 0;
     } else {
-      Object.assign(S, sortear(banco));
+      Object.assign(S, sortear(enUso));
     }
     // Precarga: cuando llegue cada publicación su imagen ya suele estar en el móvil.
     S.orden.forEach(id => { new Image().src = S.porId[id].img; });

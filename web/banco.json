@@ -108,7 +108,9 @@
     "texto": "ABUCHEO HISTÓRICO contra Pedro Sánchez en Bilbao",
     "img": "img/C07.jpg",
     "alt": "Fotograma: calle llena de gente con banderas de España",
-    "verif": "https://maldita.es/desinfo/20261013/miles-de-personas-salen-a-las-calles-de-bilbao-con-banderas-de-espana-para-exigir-responsabilidades-al-gobierno-de-sanchez-por-la-crisis-de-la-vivienda/"
+    "verif": "https://maldita.es/desinfo/20261013/miles-de-personas-salen-a-las-calles-de-bilbao-con-banderas-de-espana-para-exigir-responsabilidades-al-gobierno-de-sanchez-por-la-crisis-de-la-vivienda/",
+    "oculta": true,
+    "nota_oculta": "Retirada temporalmente el 29 oct 2026: se sustituirá por el tren calcinado presentado como del accidente de Urda (Maldita, 28 oct)."
   },
   {
     "id": "C01",

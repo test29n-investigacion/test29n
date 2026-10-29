@@ -1,4 +1,7 @@
 // Validación del banco de publicaciones (spec §4 y §5).
+
+/** Publicaciones que se sortean: todas menos las marcadas con "oculta": true (retiradas temporalmente). */
+export const activas = banco => banco.filter(b => b.oculta !== true);
 const CAMPOS_OBLIGATORIOS = ["id", "tipo", "lado", "fecha", "cuenta", "texto", "img", "alt", "verif"];
 const TIPOS = ["verdadero", "tradicional", "ia"];
 const LADOS = ["izq", "der"];
