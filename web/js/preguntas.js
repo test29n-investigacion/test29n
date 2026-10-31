@@ -52,8 +52,10 @@ export const CONSEJOS = [
 ];
 
 // La edad es la única pregunta obligatoria: hace falta para comprobar que se puede participar (14 años o más).
+// Población del estudio: 16–24 años (definición de juventud de Naciones Unidas, 15–24). Ampliada el 31 oct 2026 desde 16–19;
+// las respuestas anteriores con «20 o más» se tratan aparte en el análisis.
 export const EDAD = { k: "edad", t: "¿Cuántos años tienes?", sub: "Es la única pregunta obligatoria: la necesitamos para comprobar que puedes participar.",
-  o: ["Menos de 14", "14–15", "16–17", "18–19", "20 o más"] };
+  o: ["Menos de 14", "14–15", "16–17", "18–19", "20–24", "25 o más"] };
 
 // Matriz de frecuencia (sugerencia de A. Ardèvol-Abreu, 26 oct): una fila por medio, de 1 (nunca) a 5 (todo el tiempo).
 // Cada fila se guarda en su propia columna (info_*); fila.js tiene la misma lista de claves (lo comprueba una prueba).
