@@ -34,7 +34,7 @@ export const TEXTOS = {
   errorEnvio: "No hemos podido guardar tus respuestas. Comprueba tu conexión y vuelve a intentarlo.",
   gracias: "Gracias. Tus valoraciones nos ayudan a elegir las publicaciones del test.",
   noDisponible: "La encuesta no está disponible ahora mismo. Vuelve a intentarlo más tarde.",
-  compartir: n => `He acertado ${n} de 8 en el test de bulos del 29N. ¿Y tú?`,
+  compartir: n => `He sacado ${n}/8 en el test de bulos del 29N. ¿Me ganas? 👀`,
 };
 
 // Cada consejo: texto y, si hace falta, enlaces que se muestran detrás.

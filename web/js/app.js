@@ -295,14 +295,16 @@ function pintarResultado() {
   $("pantalla").innerHTML = `<div id="resultado" class="pila">
     <p class="etiqueta">Tu resultado</p>
     <p><span class="puntos" id="puntuacion">${aciertos}</span><span class="atenuado"> / 8</span></p>
+    <div class="reto"><button type="button" class="boton" id="retar">🎯 Reta a tus amigos</button>
+    <p class="atenuado" id="retar-aviso">${aciertos < 8 ? `¿Sacarán más de ${aciertos}?` : "¿Alguien más sacará un 8?"} Solo se comparte tu nota, no las respuestas.</p></div>
     <h2>Así eran las publicaciones</h2><ul class="resultados">${items}</ul>
     <h2>Tres consejos</h2><ol class="consejos">${CONSEJOS.map(c => `<li>${esc(c.texto)}${(c.enlaces || []).map((e, i) => `${i ? "," : ""} <a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.t)}</a>`).join("")}${c.enlaces ? "." : ""}</li>`).join("")}</ol>
     <button type="button" class="boton" id="compartir">Compartir mi puntuación</button>
     <p class="atenuado" id="compartir-aviso">Solo se comparte el número de aciertos, nunca qué publicaciones eran falsas.</p></div>`;
-  $("compartir").onclick = async () => {
+  const compartir = async avisoId => {
     const texto = TEXTOS.compartir(aciertos);
     const url = `${location.origin}${location.pathname}?c=compartido`;
-    const aviso = $("compartir-aviso");
+    const aviso = $(avisoId);
     try {
       if (navigator.share) { await navigator.share({ text: texto, url }); return; }
       await navigator.clipboard.writeText(`${texto} ${url}`);
@@ -311,6 +313,8 @@ function pintarResultado() {
       aviso.textContent = `${texto} ${url}`;
     }
   };
+  $("retar").onclick = () => compartir("retar-aviso");
+  $("compartir").onclick = () => compartir("compartir-aviso");
 }
 
 /* ---------- Arranque ---------- */
