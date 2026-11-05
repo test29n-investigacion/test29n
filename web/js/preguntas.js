@@ -6,7 +6,7 @@ export const TEXTOS = {
   titulo: "¿Sabrías detectar los bulos de esta campaña?",
   bienvenida: [
     "Hola. Soy Jaime, estudiante de bachillerato en el Colegio San Agustín de Madrid, y estoy haciendo una investigación sobre cómo los jóvenes distinguimos publicaciones reales y falsas durante las elecciones.",
-    "Son unos 5 minutos. Es anónima. No pedimos nombre, correo ni ningún dato que te identifique, y no preguntamos a quién votas. Puedes dejarla cuando quieras; si no llegas al final, no se guarda nada. Los resultados solo se publicarán agrupados, nunca respuestas individuales.",
+    "Son unos 5 minutos. Es anónima, no pedimos nombre, correo ni ningún dato que te identifique, y no preguntamos a quién votas. Puedes dejarla cuando quieras; si no llegas al final, no se guarda nada. Los resultados solo se publicarán agrupados, nunca respuestas individuales.",
     "Al terminar verás tu puntuación y qué publicaciones eran reales y cuáles falsas.",
   ],
   bienvenidaPreensayo: [
